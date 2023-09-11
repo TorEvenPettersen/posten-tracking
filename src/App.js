@@ -1,37 +1,42 @@
 import logo from './posten-logo.jpg';
 import './App.css';
-import TrackingNumber from './TrackingNumber';
-import { useEffect } from "react";
+import TrackingNumber from './components/TrackingNumber.js';
+import React, { useEffect, useState } from 'react';
 
-export default function App() {
+function App() {
  
-
+  const [jsonData, setJsonData] = useState(null);
 
   useEffect(() => {
-    fetch(`https://tracking.bring.com/api/v2/tracking.json`)
+      fetch('https://api.bring.com/tracking/api/v2/tracking.json?q=TESTPACKAGEATPICKUPPOINT')
       .then(response => response.json())
-      .then((usefulData) => {
-        console.log(usefulData);
-
-      })
-
-
-      .catch((e) => {
-        console.error(`An error occurred: ${e}`)
-      });
-  });
+      .then(data => setJsonData(data))
+      .catch(error => console.error(error));
+    }, []);
  
   return (
     <>
       <div className="App">
         <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1>Track your packages</h1>
-            <p>Tracking number input:</p>
+          <img src={logo} className="App-logo" alt="logo" />
+          <h1>Track your packages</h1>
 
-            <TrackingNumber />
+          <TrackingNumber />
+
         </header>
+
+      </div>
+
+      <div className="DisplayData">
+        {jsonData && jsonData.consignmentSet.map(consignment => (
+          <div key={consignment.consignmentId}>
+            <p>{consignment.consignmentId}</p>
+            <p>{consignment.senderReference}</p>
+          </div>
+        ))}
       </div>
     </>
   )
 }
+
+export default App;
