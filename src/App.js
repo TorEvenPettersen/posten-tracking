@@ -29,22 +29,38 @@ function App() {
 
       <div className="DisplayData">
         {jsonData && jsonData.consignmentSet.map(consignment => (
+          <>
+            {consignment.packageSet.map(pkg => (
+              <>             
+              <div className="PackageInfo">
+                <h2>Package information - {consignment.consignmentId}</h2>
+                <p><strong>Consignment id - </strong>{consignment.consignmentId}</p>
+                <p><strong>Weight: </strong>{pkg.weightInKgs} kg &nbsp;&nbsp; <strong>Size: </strong>{pkg.lengthInCm} x {pkg.widthInCm} x {pkg.heightInCm} cm</p>
+                <p><strong>Event </strong></p>
+                {pkg.eventSet.map(event => (
+                 <>
+                  <div>
+                    <p>{event.description}</p>
+                    <p className="EventInfo">{event.displayDate} {event.displayTime} - {event.city}</p>
+                  </div>
+                 </>
+                ))}
 
-          <><div key={consignment.consignmentId}>
-            <h2>Package information</h2>
-            <p><strong>Consignment id - </strong>{consignment.consignmentId}</p>
-            <p><strong>Sender reference - </strong>{consignment.senderReference}</p>
-          </div>
-          <div>
-              {consignment.packageSet.map(pkg => (
-
-                <div key={pkg.statusDescription}>
-                  <p><strong>Latest status - </strong>{pkg.statusDescription}</p>
-                  <p><strong>Package number - </strong>{pkg.packageNumber}</p>
-                </div>
-
-              ))}
-            </div></>
+              </div>
+              
+              <div className="SenderInfo">
+                <h2>Sender information</h2>
+                <p><strong>Sender</strong><br></br>{pkg.senderName}<br></br>{pkg.senderAddress.addressLine1}<br></br>{pkg.senderAddress.postalCode} {pkg.senderAddress.city}<br></br>{pkg.senderAddress.country}</p>
+                <p><strong>Recipient</strong><br></br>{pkg.recipientHandlingAddress.addressLine1}<br></br>{pkg.recipientHandlingAddress.postalCode} {pkg.recipientHandlingAddress.city}<br></br>{pkg.recipientHandlingAddress.country}</p>
+                <p><strong>Sender reference</strong><br></br>{consignment.senderReference}</p>
+                <p><strong>Latest status - </strong>{pkg.statusDescription}</p>
+                <p><strong>Package number</strong><br></br>{pkg.packageNumber}</p>
+                <p><strong>Product</strong><br></br>{pkg.productName}</p>           
+              </div>
+             
+              </>
+            ))}
+          </>
         ))}
       </div>
       
