@@ -29,12 +29,25 @@ function App() {
 
       <div className="DisplayData">
         {jsonData && jsonData.consignmentSet.map(consignment => (
-          <div key={consignment.consignmentId}>
-            <p>{consignment.consignmentId}</p>
-            <p>{consignment.senderReference}</p>
+
+          <><div key={consignment.consignmentId}>
+            <h2>Package information</h2>
+            <p><strong>Consignment id - </strong>{consignment.consignmentId}</p>
+            <p><strong>Sender reference - </strong>{consignment.senderReference}</p>
           </div>
+          <div>
+              {consignment.packageSet.map(pkg => (
+
+                <div key={pkg.statusDescription}>
+                  <p><strong>Latest status - </strong>{pkg.statusDescription}</p>
+                  <p><strong>Package number - </strong>{pkg.packageNumber}</p>
+                </div>
+
+              ))}
+            </div></>
         ))}
       </div>
+      
     </>
   )
 }

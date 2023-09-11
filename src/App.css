@@ -8,7 +8,7 @@
 }
 
 .App-header {
-  margin: 10vw;
+  margin-top: 5vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -27,6 +27,12 @@
 }
 
 .DisplayData {
-  margin: 0 20vw;
+  margin: 0 20vw 20vh;
 
+}
+
+hr {
+  height:1px;
+  border-width:0;
+  background-color: rgb(229, 229, 229);
 }
