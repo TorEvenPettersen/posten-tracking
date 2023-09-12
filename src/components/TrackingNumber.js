@@ -9,9 +9,6 @@ export default function MyForm() {
   
       // You can pass formData as a fetch body directly:
       fetch('https://api.bring.com/tracking/api/v2/tracking.json?q=TESTPACKAGEATPICKUPPOINT', { method: form.method, body: formData });
-
-
-    
     }
   
     return (
@@ -23,7 +20,6 @@ export default function MyForm() {
         </label>
         <button type="submit">Go</button>
         <hr />
-
       </form>
     );
   }

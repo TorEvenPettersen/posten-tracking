@@ -20,11 +20,8 @@ function App() {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1>Track your packages</h1>
-
           <TrackingNumber />
-
         </header>
-
       </div>
 
       <div className="DisplayData">
@@ -34,8 +31,13 @@ function App() {
               <>             
               <div className="PackageInfo">
                 <h2>Package information - {consignment.consignmentId}</h2>
-                <p><strong>Consignment id - </strong>{consignment.consignmentId}</p>
-                <p><strong>Weight: </strong>{pkg.weightInKgs} kg &nbsp;&nbsp; <strong>Size: </strong>{pkg.lengthInCm} x {pkg.widthInCm} x {pkg.heightInCm} cm</p>
+                <p>
+                  <strong>Consignment id - </strong>{consignment.consignmentId}
+                </p>
+                <p>
+                  <strong>Weight: </strong>
+                  {pkg.weightInKgs} kg &nbsp;&nbsp; <strong>Size: </strong>{pkg.lengthInCm} x {pkg.widthInCm} x {pkg.heightInCm} cm
+                </p>
                 <h2 className="EventHeading">Event</h2>
                 {pkg.eventSet.map(event => (
                  <>
@@ -45,25 +47,41 @@ function App() {
                   </div>
                  </>
                 ))}
-
               </div>
               
               <div className="SenderInfo">
                 <h2>Sender information</h2>
-                <p><strong>Sender</strong><br></br>{pkg.senderName}<br></br>{pkg.senderAddress.addressLine1}<br></br>{pkg.senderAddress.postalCode} {pkg.senderAddress.city}<br></br>{pkg.senderAddress.country}</p>
-                <p><strong>Recipient</strong><br></br>{pkg.recipientHandlingAddress.addressLine1}<br></br>{pkg.recipientHandlingAddress.postalCode} {pkg.recipientHandlingAddress.city}<br></br>{pkg.recipientHandlingAddress.country}</p>
-                <p><strong>Sender reference</strong><br></br>{consignment.senderReference}</p>
-                <p><strong>Latest status - </strong>{pkg.statusDescription}</p>
-                <p><strong>Package number</strong><br></br>{pkg.packageNumber}</p>
-                <p><strong>Product</strong><br></br>{pkg.productName}</p>           
-              </div>
-             
+                <p>
+                  <strong>Sender</strong><br></br>
+                  {pkg.senderName}<br></br>
+                  {pkg.senderAddress.addressLine1}<br></br>
+                  {pkg.senderAddress.postalCode} {pkg.senderAddress.city}<br></br>
+                  {pkg.senderAddress.country}
+                </p>
+                <p>
+                  <strong>Recipient</strong><br></br>
+                  {pkg.recipientHandlingAddress.addressLine1}<br></br>
+                  {pkg.recipientHandlingAddress.postalCode} {pkg.recipientHandlingAddress.city}<br></br>
+                  {pkg.recipientHandlingAddress.country}</p>
+                <p>
+                  <strong>Sender reference</strong><br></br>
+                  {consignment.senderReference}</p>
+                <p>
+                  <strong>Latest status - </strong>
+                  {pkg.statusDescription}</p>
+                <p>
+                  <strong>Package number</strong><br></br>
+                  {pkg.packageNumber}</p>
+                <p>
+                  <strong>Product</strong><br></br>
+                  {pkg.productName}
+                </p>           
+              </div>            
               </>
             ))}
           </>
         ))}
-      </div>
-      
+      </div>     
     </>
   )
 }
