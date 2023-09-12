@@ -36,7 +36,7 @@ function App() {
                 <h2>Package information - {consignment.consignmentId}</h2>
                 <p><strong>Consignment id - </strong>{consignment.consignmentId}</p>
                 <p><strong>Weight: </strong>{pkg.weightInKgs} kg &nbsp;&nbsp; <strong>Size: </strong>{pkg.lengthInCm} x {pkg.widthInCm} x {pkg.heightInCm} cm</p>
-                <p><strong>Event </strong></p>
+                <h2 className="EventHeading">Event</h2>
                 {pkg.eventSet.map(event => (
                  <>
                   <div>
